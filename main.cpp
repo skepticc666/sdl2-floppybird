@@ -4,6 +4,7 @@
 #include <iostream>
 #include <chrono>
 #include <SDL_ttf.h>
+#include <SDL_image.h>
 
 int main()
 {
@@ -51,6 +52,36 @@ int main()
 
     double dt = 0;
 
+    SDL_Rect rect_top[5];
+    SDL_Rect rect_btm[5];
+    
+
+    for(int i = 0 ; i < 4 ; i ++){ 
+
+        int x = rand() % 100;
+        // int m = rand() % 100;
+        rect_top[i].x = (i*width/4) ;
+        rect_top[i].y = 0;
+        rect_top[i].w = width / 18;
+        rect_top[i].h = height / 5 + x;
+        
+        rect_btm[i].x = rect_top[i].x;
+        rect_btm[i].y = rect_top[i].h + height / 5;
+        rect_btm[i].w = rect_top[i].w;
+        rect_btm[i].h = height;
+        
+    }
+    
+    
+    SDL_Texture* texture = IMG_LoadTexture(render, "C:\\Programming\\C++\\sdl2 floppybird\\image.png");
+
+
+    // rect_top.x += 140;
+    // rect_top.h += 22;
+    // rect_btm.x = rect_top.x;
+    // rect_btm.y = rect_top.h + height / 5;
+    
+
     while (isrunning)
     {
         const auto &start_time = std::chrono::high_resolution_clock::now();
@@ -87,41 +118,35 @@ int main()
 
         SDL_SetRenderDrawColor(render, 255, 0, 0, 255);
         SDL_RenderFillRect(render, &rect_bird);
+        SDL_RenderCopy(render, texture, NULL, &rect_bird); 
 
 
-        SDL_Rect rect_top;
-            rect_top.x = width / 3;
-            rect_top.y = 0;
-            rect_top.w = width / 18;
-            rect_top.h = height / 5;
-
-            SDL_Rect rect_btm;
-            rect_btm.x = rect_top.x;
-            rect_btm.y = rect_top.h + height / 5;
-            rect_btm.w = rect_top.w;
-            rect_btm.h = height;
-            
-            
-            int m = rand() % 100;
 
         for(int i = 0 ; i < 4 ; i ++){
-            SDL_SetRenderDrawColor(render,255,255,255,255);
-            SDL_RenderFillRect(render , &rect_top);
+
+            int m = rand() % 100; 
 
             SDL_SetRenderDrawColor(render,255,255,255,255);
-            SDL_RenderFillRect(render , &rect_btm);
+            SDL_RenderFillRect(render , &rect_top[i]);
+        
+            SDL_SetRenderDrawColor(render,255,255,255,255);
+            SDL_RenderFillRect(render , &rect_btm[i]);
 
-
+            rect_top[i].x -= 5;
+            rect_btm[i].x -= 5;
             
-
-
-            rect_top.x += 140;
-            rect_top.h += 22;
-            rect_btm.x = rect_top.x;
-            rect_btm.y = rect_top.h + height / 5;
+            if(rect_top[i].x + rect_top[i].w < 0){
+                rect_top[i].x = width;
+                rect_btm[i].x = width;
+                rect_top[i].h = height / 5 + m ;
+                rect_btm[i].y = rect_top[i].h + height / 5;
+            }
 
             }
 
+
+
+        
         
 
         
