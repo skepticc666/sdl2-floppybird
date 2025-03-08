@@ -1,0 +1,3 @@
+C:/Programming/C++/sdl2 floppybird/build/CMakeFiles/main.dir
+C:/Programming/C++/sdl2 floppybird/build/CMakeFiles/ALL_BUILD.dir
+C:/Programming/C++/sdl2 floppybird/build/CMakeFiles/ZERO_CHECK.dir

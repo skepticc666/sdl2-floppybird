@@ -1,0 +1,10 @@
+^C:\PROGRAMMING\C++\SDL2 FLOPPYBIRD\BUILD\CMAKEFILES\A66D44F8B15E06E4B98757835E138B80\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Programming/C++/sdl2 floppybird" "-BC:/Programming/C++/sdl2 floppybird/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Programming/C++/sdl2 floppybird/build/sfjdhsf.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
