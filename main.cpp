@@ -134,9 +134,28 @@ int main()
                 rect_top[i].h = height / 5 + m;
                 rect_btm[i].y = rect_top[i].h + height / 5;
             }
-            if (rect_bird.y < rect_top.y + rect_top.h || rect_bird.y + rect_bird.h > rect_pl.y)
+            
+            int j = 0;
+
+            // if(rect_bird.x > rect_top[i].x + rect_top[i].w){
+            //      // text initialization begins here
+            //      SDL_Color text_color = {255, 0, 0, 255};
+            //      SDL_Surface *text = TTF_RenderText_Solid(font, "points" , text_color);
+
+            //      SDL_Texture *text_texture = SDL_CreateTextureFromSurface(render, text);
+            //      // text ends begins here
+
+            //      // text.w;
+
+            //      SDL_Rect src = {0, 0, text->w, text->h};
+            //      SDL_Rect dest = {400 , 0 , text->w , text->h };
+            //      SDL_RenderCopy(render, text_texture, &src, &dest);
+            // }
+
+            
+            if (rect_bird.y < rect_top[i].y + rect_top[i].h || rect_bird.y + rect_bird.h > rect_btm[i].y)
             {
-                if (rect_bird.x + rect_bird.w > rect_top.x)
+                if (rect_bird.x + rect_bird.w > rect_top[i].x)
                 {
 
                     // text initialization begins here
@@ -150,8 +169,10 @@ int main()
 
                     SDL_Rect src = {0, 0, text->w, text->h};
                     SDL_Rect dest = {width / 2 - text->w * 4 / 2, height / 2 - text->h * 4 / 2, text->w * 4, text->h * 4};
+                    SDL_RenderCopy(render, text_texture, &src, &dest);
                     gameRunning = false;
                 }
+                
             }
         }
 
