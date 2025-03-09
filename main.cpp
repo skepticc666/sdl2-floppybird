@@ -89,6 +89,7 @@ int main()
             if (event.type == SDL_QUIT)
             {
                 isrunning = false;
+                
             }
 
             if (event.type == SDL_KEYDOWN)
